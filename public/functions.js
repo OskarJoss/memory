@@ -36,9 +36,11 @@ const createCards = (numberOfPairs) => {
         //add card to the cards-container
         document.querySelector('.cards-container').appendChild(cardFrame);
     })
-
-
 }
 
-createCards(8);
+const startGame = (numberOfPairs) => {
+    //empty the cards-container
+    document.querySelector('.cards-container').innerHTML = "";
+    createCards(numberOfPairs);
+}
 
