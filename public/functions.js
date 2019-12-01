@@ -39,8 +39,12 @@ const createCards = (numberOfPairs) => {
 }
 
 const startGame = (numberOfPairs) => {
-    //empty the cards-container
-    document.querySelector('.cards-container').innerHTML = "";
+    const container = document.querySelector('.cards-container');
+    //empty card container
+    container.innerHTML = "";
+
+    //add logic to change width of container here
+
     createCards(numberOfPairs);
 }
 
