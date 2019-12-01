@@ -17,7 +17,7 @@ startButtons.forEach(button => {
                     card.classList.add("flipped");
                     //push the .card into guessedCards array
                     guessedCards.push(event.target.parentElement);
-                    //add 1 to click counter
+                    //increase click counter
                     clickCounter++;
                     //when two cards have been clicked
                     if (clickCounter === 2) {
@@ -29,7 +29,9 @@ startButtons.forEach(button => {
                             console.log("yay!");
                         } else {
                             guessedCards.forEach(card => {
-                                card.classList.remove("flipped");
+                                setTimeout(() => {
+                                    card.classList.remove("flipped");
+                                }, 800)
                             });
                         }
                         //reset clickCounter and empty the guessedCards array
