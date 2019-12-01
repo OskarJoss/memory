@@ -1,5 +1,3 @@
-
-
 //shuffle array function
 function shuffle(a) {
     var j, x, i;
@@ -12,5 +10,8 @@ function shuffle(a) {
     return a;
 }
 
+const createCards = (numberOfpairs) => {
+
+}
 
 
