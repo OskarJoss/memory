@@ -21,3 +21,52 @@ button {
     width: 70px;
     margin: 0 10px;
 }
+
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* add with to own class for easy mode etc */
+    width: 600px;
+}
+
+.card-frame {
+    position: relative;
+    height: 100px;
+    width: 80px;
+    margin: 10px;
+}
+
+.card {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: 0.5s ease;
+}
+
+.card-back {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: green;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    background-color: red;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+}
+
+.flipped {
+    transform: rotateY(180deg);
+}
