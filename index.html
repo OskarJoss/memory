@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css">
+    <style>
+        body {
+            background-color: antiquewhite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 80%;
+        }
+
+        .card {
+            height: 200px;
+            width: 100px;
+            position: relative;
+            margin: 8px;
+        }
+
+        .cardFront {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background-color: #f8f8f8;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 40px;
+        }
+
+        .cardBack {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background-color: black;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Memory!</h1>
+    <div class="card-container">
+
+    </div>
+
+
+    <script>
+        const numbersArray = [];
+        const cardContainer = document.querySelector('.card-container');
+        //create array of numbers for cards, not pairs yet
+        const createCardArray = (numberOfPairs) => {
+            for (let i = 1; i <= numberOfPairs; i++) {
+                numbersArray.push({cardNumber:i})
+            }
+        }
+
+        createCardArray(9);
+
+        //create the pairs
+        numbersArray.forEach((number) => {
+            numbersArray.push(number);
+        })
+
+        //stolen shuffle array function
+        function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
+
+        shuffle(numbersArray);
+
+        //create cards
+        //add backside toggle hidden.
+        numbersArray.forEach((number) => {
+
+            const card = document.createElement('div');
+           const cardFront = document.createElement('div');
+            const cardBack = document.createElement('div');
+
+            card.classList.add('card');
+           cardFront.classList.add('cardFront');
+           cardFront.classList.add('hidden');
+           cardFront.innerHTML = `<h2>${number.cardNumber}</h2>`;
+           cardBack.classList.add('cardBack');
+
+           card.appendChild(cardFront);
+           card.appendChild(cardBack);
+            cardContainer.appendChild(card);
+        })
+
+        const cards = document.querySelectorAll('.card');
+
+
+        cards.forEach((card) => {
+            card.addEventListener('click', (event) => {
+                    console.log(card.children[0]);
+                    // varför kan jag inte göra en foreach på card.children?
+
+                  })
+            })
+
+
+    </script>
+</body>
+</html>
