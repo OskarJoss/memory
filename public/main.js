@@ -28,9 +28,9 @@ startButtons.forEach(button => {
                         ) {
                             console.log("yay!");
                         } else {
-                            guessedCards.forEach(card => {
+                            guessedCards.forEach(guessedCard => {
                                 setTimeout(() => {
-                                    card.classList.remove("flipped");
+                                    guessedCard.classList.remove("flipped");
                                 }, 800)
                             });
                         }
