@@ -38,12 +38,30 @@ const createCards = (numberOfPairs) => {
     })
 }
 
+const removeAllClasses = (element) => {
+    while (element.classList.length !== 0) {
+        element.classList.remove(element.classList[0]);
+    }
+}
+
 const startGame = (numberOfPairs) => {
     const container = document.querySelector('.cards-container');
     //empty card container
     container.innerHTML = "";
 
-    //add logic to change width of container here
+    //adjust container width depending on number of pairs
+    removeAllClasses(container);
+    container.classList.add('cards-container');
+    //change to switch statement
+    if (numberOfPairs == 8) {
+        container.classList.add('easy-container');
+    } else if (numberOfPairs == 9) {
+        container.classList.add('medium-container');
+    } else if (numberOfPairs == 10) {
+        container.classList.add('hard-container');
+    }
+
+    console.log(container);
 
     createCards(numberOfPairs);
 }
