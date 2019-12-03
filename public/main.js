@@ -16,7 +16,7 @@ startButtons.forEach(button => {
                 if (card.classList.contains("flipped") === false) {
                     card.classList.add("flipped");
                     //push the .card into guessedCards array
-                    guessedCards.push(event.target.parentElement);
+                    guessedCards.push(card);
                     //increase click counter
                     clickCounter++;
                     //when two cards have been clicked
