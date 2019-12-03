@@ -1,7 +1,9 @@
 body {
     height: 100vh;
     background-color: antiquewhite;
+}
 
+section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,8 +28,18 @@ button {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* add with to own class for easy mode etc */
+}
+
+.easy-container {
+    width: 400px;
+}
+
+.medium-container {
     width: 600px;
+}
+
+.hard-container {
+    width: 500px;
 }
 
 .card-frame {

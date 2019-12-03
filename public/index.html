@@ -9,18 +9,29 @@
         <link rel="stylesheet" href="/public/main.css" />
     </head>
     <body>
+        <section>
+            <h1>Memory!</h1>
 
-        <h1>Memory!</h1>
+            <div class="button-container">
+                <button class="start-button" data-pairs="2">
+                    Testing
+                </button>
+                <button class="start-button" data-pairs="8">
+                    Easy
+                </button>
+                <button class="start-button" data-pairs="9">
+                    Medium
+                </button>
+                <button class="start-button" data-pairs="10">
+                    Hard
+                </button>
+            </div>
+        </section>
+        <section>
+            <div class="cards-container testclass"></div>
 
-        <div class="button-container">
-            <button class="start-button easy-button" data-pairs="8">Easy</button>
-            <button class="start-button medium-button" data-pairs="9">Medium</button>
-            <button class="start-button hard-button" data-pairs="10">Hard</button>
-        </div>
-
-        <div class="cards-container"></div>
-
-        <script src="/public/functions.js"></script>
-        <script src="/public/main.js"></script>
+            <script src="/public/functions.js"></script>
+            <script src="/public/main.js"></script>
+        </section>
     </body>
 </html>
