@@ -5,7 +5,7 @@ let clickCounter = 0;
 //run start game function when start-buttons are clicked
 startButtons.forEach(button => {
     button.addEventListener("click", event => {
-        const buttonData = event.target.dataset.pairs
+        const buttonData = event.target.dataset.pairs;
         startGame(buttonData);
 
         //add eventlistener to flip cards
@@ -21,17 +21,21 @@ startButtons.forEach(button => {
                     clickCounter++;
 
                     if (clickCounter === 2) {
-                        //check if cards match
                         if (
+                            guessedCards[0].dataset.number == 0 &&
+                            guessedCards[1].dataset.number == 0
+                        ) {
+                            loseGame(buttonData);
+                        } else if (
                             guessedCards[0].dataset.number ===
                             guessedCards[1].dataset.number
                         ) {
-                            console.log("yay!");
+                            console.log('yay!');
                         } else {
                             guessedCards.forEach(guessedCard => {
                                 setTimeout(() => {
                                     guessedCard.classList.remove("flipped");
-                                }, 800)
+                                }, 800);
                             });
                         }
                         //reset clickCounter and empty the guessedCards array

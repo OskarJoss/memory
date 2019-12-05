@@ -74,3 +74,10 @@ const startGame = numberOfPairs => {
 
     createCards(numberOfPairs);
 };
+
+const loseGame = (numberOfPairs) => {
+    const container = document.querySelector(".cards-container");
+    container.innerHTML = "";
+    container.innerHTML = `<h1>GAME OVER</h1>
+    <button>Play Again</button>`;
+}
