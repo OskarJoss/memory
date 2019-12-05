@@ -26,7 +26,7 @@ startButtons.forEach(button => {
                             guessedCards[1].dataset.number == 0
                         ) {
                             setTimeout(() => {
-                                loseGame(buttonData);
+                                endGame('lose', buttonData);
                             }, 700);
                         } else if (
                             guessedCards[0].dataset.number ===

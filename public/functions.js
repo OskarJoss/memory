@@ -75,22 +75,26 @@ const startGame = numberOfPairs => {
     createCards(numberOfPairs);
 };
 
-const loseGame = numberOfPairs => {
+const endGame = (winOrLose, numberOfPairs) => {
     const container = document.querySelector(".cards-container");
     //remove flex wrap while replay-message is up
     removeAllClasses(container);
-    container.classList.add('cards-container');
+    container.classList.add("cards-container");
 
-    container.innerHTML = `
-    <div class="replay-div">
-        <h1>GAME OVER</h1>
-        <img class="explosion-image" src="https://media0.giphy.com/media/oe33xf3B50fsc/giphy.gif?cid=790b7611c1646c6930bb86c91dbd7392e4e6f1026a27b90f&rid=giphy.gif alt="explosion">
-        <button class="replay-button">Play Again</button>
-    </div>`;
+    if (winOrLose === "lose") {
+        container.innerHTML = `
+        <div class="replay-div">
+            <h1>GAME OVER</h1>
+            <img class="explosion-image" src="https://media0.giphy.com/media/oe33xf3B50fsc/giphy.gif?cid=790b7611c1646c6930bb86c91dbd7392e4e6f1026a27b90f&rid=giphy.gif alt="explosion">
+            <button class="replay-button">Play Again</button>
+        </div>`;
+    } else if (winOrLose === 'win') {
 
-    const replayButton = document.querySelector('.replay-button');
+    }
 
-    replayButton.addEventListener('click', () => {
+    const replayButton = document.querySelector(".replay-button");
+
+    replayButton.addEventListener("click", () => {
         startGame(numberOfPairs);
-    })
+    });
 };
