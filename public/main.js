@@ -5,8 +5,8 @@ let clickCounter = 0;
 //run start game function when start-buttons are clicked
 startButtons.forEach(button => {
     button.addEventListener("click", event => {
-        //add pairs from buttons data-set
-        startGame(event.target.dataset.pairs);
+        const buttonData = event.target.dataset.pairs
+        startGame(buttonData);
 
         //add eventlistener to flip cards
         const cards = document.querySelectorAll(".card");
@@ -17,9 +17,9 @@ startButtons.forEach(button => {
                     card.classList.add("flipped");
                     //push the .card into guessedCards array
                     guessedCards.push(card);
-                    //increase click counter
+
                     clickCounter++;
-                    //when two cards have been clicked
+
                     if (clickCounter === 2) {
                         //check if cards match
                         if (

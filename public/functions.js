@@ -9,6 +9,7 @@ function shuffle(a) {
     }
     return a;
 }
+
 //create cards and add them to the cards-container
 const createCards = (numberOfPairs) => {
     //create an array of all the numbers on the cards
@@ -20,7 +21,7 @@ const createCards = (numberOfPairs) => {
     numbers.forEach((number) => {
         numbers.push(number);
     })
-    //shuffle the array
+
     shuffle(numbers);
     //create the cards
     numbers.forEach((number) => {
@@ -38,6 +39,7 @@ const createCards = (numberOfPairs) => {
     })
 }
 
+//remove all classes of an element
 const removeAllClasses = (element) => {
     while (element.classList.length !== 0) {
         element.classList.remove(element.classList[0]);
@@ -60,8 +62,6 @@ const startGame = (numberOfPairs) => {
     } else if (numberOfPairs == 10) {
         container.classList.add('hard-container');
     }
-
-    console.log(container);
 
     createCards(numberOfPairs);
 }
