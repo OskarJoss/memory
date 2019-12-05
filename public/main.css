@@ -82,3 +82,22 @@ button {
 .flipped {
     transform: rotateY(180deg);
 }
+
+.bomb-image {
+    height: 50%;
+}
+
+.explosion-image {
+    height: 300px;
+}
+
+.replay-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.replay-button {
+    margin-top: 20px;
+}
