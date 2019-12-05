@@ -77,6 +77,10 @@ const startGame = numberOfPairs => {
 
 const loseGame = numberOfPairs => {
     const container = document.querySelector(".cards-container");
+    //remove flex wrap while replay-message is up
+    removeAllClasses(container);
+    container.classList.add('cards-container');
+
     container.innerHTML = `
     <div class="replay-div">
         <h1>GAME OVER</h1>
