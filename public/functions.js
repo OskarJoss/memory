@@ -56,6 +56,7 @@ const removeAllClasses = element => {
 };
 
 const startGame = numberOfPairs => {
+    moves = 0;
     const container = document.querySelector(".cards-container");
     //empty card container
     container.innerHTML = "";
@@ -73,9 +74,52 @@ const startGame = numberOfPairs => {
     }
 
     createCards(numberOfPairs);
+
+    //add eventlistener to flip cards
+    const cards = document.querySelectorAll(".card");
+    cards.forEach(card => {
+        card.addEventListener("click", event => {
+            //add class flipped if card doesnt have it already
+            if (card.classList.contains("flipped") === false) {
+                card.classList.add("flipped");
+                //push the .card into guessedCards array
+                guessedCards.push(card);
+
+                clickCounter++;
+
+                if (clickCounter === 2) {
+                    moves++;
+                    if (
+                        guessedCards[0].dataset.number == 0 &&
+                        guessedCards[1].dataset.number == 0
+                    ) {
+                        setTimeout(() => {
+                            endGame("lose", numberOfPairs);
+                        }, 700);
+                    } else if (
+                        guessedCards[0].dataset.number ===
+                        guessedCards[1].dataset.number
+                    ) {
+                        console.log("yay!");
+                    } else {
+                        guessedCards.forEach(guessedCard => {
+                            setTimeout(() => {
+                                guessedCard.classList.remove("flipped");
+                            }, 800);
+                        });
+                    }
+                    //win game logic here
+
+                    //reset clickCounter and empty the guessedCards array
+                    clickCounter = 0;
+                    guessedCards = [];
+                }
+            }
+        });
+    });
 };
 
-const endGame = (winOrLose, numberOfPairs) => {
+const endGame = (winOrLose, numberOfPairs, numberOfMoves) => {
     const container = document.querySelector(".cards-container");
     //remove flex wrap while replay-message is up
     removeAllClasses(container);
@@ -88,8 +132,13 @@ const endGame = (winOrLose, numberOfPairs) => {
             <img class="explosion-image" src="https://media0.giphy.com/media/oe33xf3B50fsc/giphy.gif?cid=790b7611c1646c6930bb86c91dbd7392e4e6f1026a27b90f&rid=giphy.gif alt="explosion">
             <button class="replay-button">Play Again</button>
         </div>`;
-    } else if (winOrLose === 'win') {
-
+    } else if (winOrLose === "win") {
+        container.innerHTML = `
+        <div class="replay-div">
+            <h1>CONGRATULATIONS!</h1>
+            <p>You beat the game in ${numberOfMoves} moves.</p>
+            <button class="replay-button">Play Again</button>
+        </div>`;
     }
 
     const replayButton = document.querySelector(".replay-button");
