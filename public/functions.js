@@ -109,6 +109,7 @@ const startGame = numberOfPairs => {
                         });
                     }
                     //win game logic here
+                    console.log(cards);
 
                     //reset clickCounter and empty the guessedCards array
                     clickCounter = 0;
