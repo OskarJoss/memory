@@ -105,3 +105,21 @@ button {
 .replay-button {
     margin-top: 20px;
 }
+
+.scores-container {
+    display: none;
+    position: absolute;
+    height: 300px;
+    width: 500px;
+    background-color: honeydew;
+}
+
+.scores-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.visible {
+    display: block;
+}
