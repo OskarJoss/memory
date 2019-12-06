@@ -86,6 +86,7 @@ const startGame = numberOfPairs => {
                 guessedCards.push(card);
 
                 clickCounter++;
+                let matchFound = false;
 
                 if (clickCounter === 2) {
                     moves++;
@@ -100,7 +101,7 @@ const startGame = numberOfPairs => {
                         guessedCards[0].dataset.number ===
                         guessedCards[1].dataset.number
                     ) {
-                        console.log("yay!");
+                        matchFound = true;
                     } else {
                         guessedCards.forEach(guessedCard => {
                             setTimeout(() => {
@@ -108,8 +109,18 @@ const startGame = numberOfPairs => {
                             }, 800);
                         });
                     }
-                    //win game logic here
-                    console.log(cards);
+                    //check for win
+                    let flippedCounter = 0
+                    cards.forEach((card) => {
+                        if (card.classList.contains('flipped')) {
+                            flippedCounter++;
+                        }
+                    })
+                    if (flippedCounter === cards.length - 2 && matchFound === true) {
+                        setTimeout(() => {
+                            endGame("win", numberOfPairs, moves);
+                        }, 700);
+                    }
 
                     //reset clickCounter and empty the guessedCards array
                     clickCounter = 0;
