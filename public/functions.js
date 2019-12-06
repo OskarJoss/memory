@@ -149,6 +149,8 @@ const endGame = (winOrLose, numberOfPairs, numberOfMoves) => {
     removeAllClasses(container);
     container.classList.add("cards-container");
 
+    const difficulty = returnDifficulty(numberOfPairs);
+
     if (winOrLose === "lose") {
         container.innerHTML = `
         <div class="replay-div">
@@ -160,7 +162,7 @@ const endGame = (winOrLose, numberOfPairs, numberOfMoves) => {
         container.innerHTML = `
         <div class="replay-div">
             <h1>CONGRATULATIONS!</h1>
-            <p>You beat the game in ${numberOfMoves} moves.</p>
+            <p>You beat ${difficulty}-mode in ${numberOfMoves} moves.</p>
             <button class="replay-button">Play Again</button>
         </div>`;
     }
