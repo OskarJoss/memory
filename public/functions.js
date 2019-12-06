@@ -55,6 +55,16 @@ const removeAllClasses = element => {
     }
 };
 
+const returnDifficulty = (numberOfPairs) => {
+    if (numberOfPairs == 8) {
+        return 'easy';
+    } else if (numberOfPairs == 9) {
+        return 'medium';
+    } else if (numberOfPairs == 10) {
+        return 'hard';
+    }
+}
+
 const startGame = numberOfPairs => {
     moves = 0;
     const container = document.querySelector(".cards-container");
@@ -64,12 +74,14 @@ const startGame = numberOfPairs => {
     //adjust container width depending on number of pairs
     removeAllClasses(container);
     container.classList.add("cards-container");
-    //change to switch statement
-    if (numberOfPairs == 8) {
+
+    const difficulty = returnDifficulty(numberOfPairs);
+
+    if (difficulty === 'easy') {
         container.classList.add("easy-container");
-    } else if (numberOfPairs == 9) {
+    } else if (difficulty === 'medium') {
         container.classList.add("medium-container");
-    } else if (numberOfPairs == 10) {
+    } else if (difficulty === 'hard') {
         container.classList.add("hard-container");
     }
 
@@ -86,6 +98,7 @@ const startGame = numberOfPairs => {
                 guessedCards.push(card);
 
                 clickCounter++;
+                let matchFound = false;
 
                 if (clickCounter === 2) {
                     moves++;
@@ -100,7 +113,7 @@ const startGame = numberOfPairs => {
                         guessedCards[0].dataset.number ===
                         guessedCards[1].dataset.number
                     ) {
-                        console.log("yay!");
+                        matchFound = true;
                     } else {
                         guessedCards.forEach(guessedCard => {
                             setTimeout(() => {
@@ -108,8 +121,18 @@ const startGame = numberOfPairs => {
                             }, 800);
                         });
                     }
-                    //win game logic here
-                    console.log(cards);
+                    //check for win
+                    let flippedCounter = 0
+                    cards.forEach((card) => {
+                        if (card.classList.contains('flipped')) {
+                            flippedCounter++;
+                        }
+                    })
+                    if (flippedCounter === cards.length - 2 && matchFound === true) {
+                        setTimeout(() => {
+                            endGame("win", numberOfPairs, moves);
+                        }, 700);
+                    }
 
                     //reset clickCounter and empty the guessedCards array
                     clickCounter = 0;
@@ -126,6 +149,8 @@ const endGame = (winOrLose, numberOfPairs, numberOfMoves) => {
     removeAllClasses(container);
     container.classList.add("cards-container");
 
+    const difficulty = returnDifficulty(numberOfPairs);
+
     if (winOrLose === "lose") {
         container.innerHTML = `
         <div class="replay-div">
@@ -137,7 +162,7 @@ const endGame = (winOrLose, numberOfPairs, numberOfMoves) => {
         container.innerHTML = `
         <div class="replay-div">
             <h1>CONGRATULATIONS!</h1>
-            <p>You beat the game in ${numberOfMoves} moves.</p>
+            <p>You beat ${difficulty}-mode in ${numberOfMoves} moves.</p>
             <button class="replay-button">Play Again</button>
         </div>`;
     }
