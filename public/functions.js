@@ -55,6 +55,16 @@ const removeAllClasses = element => {
     }
 };
 
+const returnDifficulty = (numberOfPairs) => {
+    if (numberOfPairs == 8) {
+        return 'easy';
+    } else if (numberOfPairs == 9) {
+        return 'medium';
+    } else if (numberOfPairs == 10) {
+        return 'hard';
+    }
+}
+
 const startGame = numberOfPairs => {
     moves = 0;
     const container = document.querySelector(".cards-container");
@@ -64,12 +74,14 @@ const startGame = numberOfPairs => {
     //adjust container width depending on number of pairs
     removeAllClasses(container);
     container.classList.add("cards-container");
-    //change to switch statement
-    if (numberOfPairs == 8) {
+
+    const difficulty = returnDifficulty(numberOfPairs);
+
+    if (difficulty === 'easy') {
         container.classList.add("easy-container");
-    } else if (numberOfPairs == 9) {
+    } else if (difficulty === 'medium') {
         container.classList.add("medium-container");
-    } else if (numberOfPairs == 10) {
+    } else if (difficulty === 'hard') {
         container.classList.add("hard-container");
     }
 
