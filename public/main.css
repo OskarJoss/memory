@@ -91,6 +91,10 @@ button {
     height: 300px;
 }
 
+.victory-image {
+    height: 250px;
+}
+
 .replay-div {
     display: flex;
     flex-direction: column;

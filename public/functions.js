@@ -162,6 +162,7 @@ const endGame = (winOrLose, numberOfPairs, numberOfMoves) => {
         container.innerHTML = `
         <div class="replay-div">
             <h1>CONGRATULATIONS!</h1>
+            <img class="victory-image" src="https://media2.giphy.com/media/c862b2dAhJXYA/giphy.gif?cid=790b7611d0fed7c16f745b76570918d9df85d41792a7271a&rid=giphy.gif" alt="victory">
             <p>You beat ${difficulty}-mode in ${numberOfMoves} moves.</p>
             <button class="replay-button">Play Again</button>
         </div>`;
