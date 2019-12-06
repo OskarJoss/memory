@@ -143,6 +143,19 @@ const startGame = numberOfPairs => {
     });
 };
 
+//adds highscore to localStorage
+const addHighScore = (difficulty, numberOfMoves) => {
+
+    if (localStorage.getItem(`${difficulty}-highscores`) === null) {
+        let highScores = [];
+        localStorage.setItem(`${difficulty}-highscores`, JSON.stringify(highScores));
+    }
+
+    let scores = JSON.parse(localStorage.getItem(`${difficulty}-highscores`));
+    scores.push(numberOfMoves);
+    localStorage.setItem(`${difficulty}-highscores`, JSON.stringify(scores));
+}
+
 const endGame = (winOrLose, numberOfPairs, numberOfMoves) => {
     const container = document.querySelector(".cards-container");
     //remove flex wrap while replay-message is up
@@ -166,6 +179,8 @@ const endGame = (winOrLose, numberOfPairs, numberOfMoves) => {
             <p>You beat ${difficulty}-mode in ${numberOfMoves} moves.</p>
             <button class="replay-button">Play Again</button>
         </div>`;
+
+        addHighScore(difficulty, numberOfMoves);
     }
 
     const replayButton = document.querySelector(".replay-button");
