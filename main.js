@@ -6,6 +6,8 @@ let guessedCards = [];
 let clickCounter = 0;
 let moves = 0;
 
+getHighScores();
+
 //run start game function when start-buttons are clicked
 startButtons.forEach(button => {
     button.addEventListener("click", event => {
