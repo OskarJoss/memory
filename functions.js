@@ -167,7 +167,45 @@ const addHighScore = (difficulty, numberOfMoves) => {
     localStorage.setItem(`${difficulty}-highscores`, JSON.stringify(scores));
 };
 
-//get highscores function here
+const getHighScores = () => {
+    let allHighScores = {};
+    let topScores = [];
+    let difficultys = ["easy", "medium", "hard", "insane"];
+
+    //put all highscore arrays in an object sorted by difficulty
+    difficultys.forEach(difficulty => {
+        const listOfScores = JSON.parse(
+            localStorage.getItem(`${difficulty}-highscores`)
+        );
+        Object.defineProperty(allHighScores, [difficulty], {
+            value: listOfScores,
+            writable: true
+        });
+    });
+
+    //sort the arrays and limit to 5 best scores
+    difficultys.forEach((difficulty) => {
+        if (allHighScores[difficulty] !== null) {
+            allHighScores[difficulty].sort((a, b) => {
+                return a - b;
+            });
+            //could cause trouble in strict mode
+            allHighScores[difficulty] = allHighScores[difficulty].slice(0,5);
+        }
+    })
+
+    //add the scores to the page
+    difficultys.forEach((difficulty) => {
+        if (allHighScores[difficulty] !== null) {
+            allHighScores[difficulty].forEach((score) => {
+                const ol = document.querySelector(`.${difficulty}-list`);
+                const li = document.createElement('li');
+                li.textContent = score;
+                ol.appendChild(li);
+            })
+        }
+    })
+};
 
 const endGame = (winOrLose, numberOfPairs, numberOfMoves) => {
     const container = document.querySelector(".cards-container");
@@ -194,6 +232,7 @@ const endGame = (winOrLose, numberOfPairs, numberOfMoves) => {
         </div>`;
 
         addHighScore(difficulty, numberOfMoves);
+        getHighScores();
     }
 
     const replayButton = document.querySelector(".replay-button");
