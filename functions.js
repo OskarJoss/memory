@@ -167,6 +167,8 @@ const addHighScore = (difficulty, numberOfMoves) => {
     localStorage.setItem(`${difficulty}-highscores`, JSON.stringify(scores));
 };
 
+//get highscores function here
+
 const endGame = (winOrLose, numberOfPairs, numberOfMoves) => {
     const container = document.querySelector(".cards-container");
     //remove flex wrap while replay-message is up
