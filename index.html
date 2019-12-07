@@ -9,8 +9,30 @@
         <link rel="stylesheet" href="/main.css" />
     </head>
     <body>
-        <button class="scores-button">Highscores</button>
+        <button class="scores-button">High Scores</button>
         <section>
+            <div class="scores-container">
+                <h2>Your High Scores</h2>
+                <div class="list-container">
+                    <div>
+                        <h3>Easy</h3>
+                        <ol class="easy-list"></ol>
+                    </div>
+                    <div>
+                        <h3>Medium</h3>
+                        <ol class="medium-list"></ol>
+                    </div>
+                    <div>
+                        <h3>Hard</h3>
+                        <ol class="hard-list"></ol>
+                    </div>
+                    <div>
+                        <h3>Insane</h3>
+                        <ol class="insane-list"></ol>
+                    </div>
+                </div>
+                <button class="close-scores-button">close</button>
+            </div>
             <h1>Memory!</h1>
 
             <div class="button-container">
@@ -32,13 +54,9 @@
             </div>
         </section>
         <section>
-            <div class="cards-container testclass"></div>
+            <div class="cards-container"></div>
         </section>
-        <div class="scores-container">
-            <ol class="easy-list"></ol>
-            <ol class="medium-list"></ol>
-            <ol class="hard-list"></ol>
-        </div>
+
         <script src="/functions.js"></script>
         <script src="/main.js"></script>
     </body>
