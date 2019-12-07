@@ -168,8 +168,13 @@ const addHighScore = (difficulty, numberOfMoves) => {
 };
 
 const getHighScores = () => {
+    //empty the lists
+    const lists = document.querySelectorAll('ol');
+    lists.forEach((list) => {
+        list.innerHTML = "";
+    })
+
     let allHighScores = {};
-    let topScores = [];
     let difficultys = ["easy", "medium", "hard", "insane"];
 
     //put all highscore arrays in an object sorted by difficulty
