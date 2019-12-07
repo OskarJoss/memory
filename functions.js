@@ -12,61 +12,67 @@ function shuffle(a) {
 
 //create cards and add them to the cards-container
 const createCards = numberOfPairs => {
-    //create an array of all the numbers on the cards
     const numbers = [];
     for (let i = 1; i <= numberOfPairs; i++) {
         numbers.push(i);
     }
-    //add the numbers to the array again to create pairs
     numbers.forEach(number => {
         numbers.push(number);
     });
 
     shuffle(numbers);
-    //create the cards
+
     numbers.forEach(number => {
         const cardFrame = document.createElement("div");
         cardFrame.classList.add("card-frame");
 
+        //replace the highest number with the bomb
         if (number == numberOfPairs) {
-            cardFrame.innerHTML = `<div class="card" data-number="0">
-            <div class="card-back"></div>
-            <div class="card-front">
-                <img class="bomb-image" src="https://image.flaticon.com/icons/svg/112/112683.svg" alt="bomb">
-            </div>
-        </div>`;
+            cardFrame.innerHTML = `
+                <div class="card" data-number="0">
+                    <div class="card-back">
+                    </div>
+                    <div class="card-front">
+                        <img class="bomb-image" src="https://image.flaticon.com/icons/svg/112/112683.svg" alt="bomb">
+                    </div>
+                </div>`;
         } else {
-            cardFrame.innerHTML = `<div class="card" data-number="${number}">
-            <div class="card-back"></div>
-            <div class="card-front">
-                <h2>${number}</h2>
-            </div>
-        </div>`;
+            cardFrame.innerHTML = `
+                <div class="card" data-number="${number}">
+                    <div class="card-back">
+                    </div>
+                    <div class="card-front">
+                        <h2>${number}</h2>
+                    </div>
+                </div>`;
         }
 
         document.querySelector(".cards-container").appendChild(cardFrame);
     });
 };
 
-//remove all classes of an element
+//remove all css classes on an element
 const removeAllClasses = element => {
     while (element.classList.length !== 0) {
         element.classList.remove(element.classList[0]);
     }
 };
 
-const returnDifficulty = (numberOfPairs) => {
+const returnDifficulty = numberOfPairs => {
     if (numberOfPairs == 8) {
-        return 'easy';
+        return "easy";
     } else if (numberOfPairs == 9) {
-        return 'medium';
+        return "medium";
     } else if (numberOfPairs == 10) {
-        return 'hard';
+        return "hard";
     }
-}
+};
 
 const startGame = numberOfPairs => {
     moves = 0;
+    guessedCards = [];
+    clickCounter = 0;
+
     const container = document.querySelector(".cards-container");
     //empty card container
     container.innerHTML = "";
@@ -77,11 +83,11 @@ const startGame = numberOfPairs => {
 
     const difficulty = returnDifficulty(numberOfPairs);
 
-    if (difficulty === 'easy') {
+    if (difficulty === "easy") {
         container.classList.add("easy-container");
-    } else if (difficulty === 'medium') {
+    } else if (difficulty === "medium") {
         container.classList.add("medium-container");
-    } else if (difficulty === 'hard') {
+    } else if (difficulty === "hard") {
         container.classList.add("hard-container");
     }
 
@@ -122,13 +128,16 @@ const startGame = numberOfPairs => {
                         });
                     }
                     //check for win
-                    let flippedCounter = 0
-                    cards.forEach((card) => {
-                        if (card.classList.contains('flipped')) {
+                    let flippedCounter = 0;
+                    cards.forEach(card => {
+                        if (card.classList.contains("flipped")) {
                             flippedCounter++;
                         }
-                    })
-                    if (flippedCounter === cards.length - 2 && matchFound === true) {
+                    });
+                    if (
+                        flippedCounter === cards.length - 2 &&
+                        matchFound === true
+                    ) {
                         setTimeout(() => {
                             endGame("win", numberOfPairs, moves);
                         }, 700);
@@ -145,16 +154,20 @@ const startGame = numberOfPairs => {
 
 //adds highscore to localStorage
 const addHighScore = (difficulty, numberOfMoves) => {
-
     if (localStorage.getItem(`${difficulty}-highscores`) === null) {
-        let highScores = [];
-        localStorage.setItem(`${difficulty}-highscores`, JSON.stringify(highScores));
+        let emptyArray = [];
+        localStorage.setItem(
+            `${difficulty}-highscores`,
+            JSON.stringify(emptyArray)
+        );
     }
 
     let scores = JSON.parse(localStorage.getItem(`${difficulty}-highscores`));
     scores.push(numberOfMoves);
     localStorage.setItem(`${difficulty}-highscores`, JSON.stringify(scores));
-}
+};
+
+//get highscores function here
 
 const endGame = (winOrLose, numberOfPairs, numberOfMoves) => {
     const container = document.querySelector(".cards-container");

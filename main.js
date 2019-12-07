@@ -1,6 +1,7 @@
 const startButtons = document.querySelectorAll(".start-button");
+const scoresContainer = document.querySelector('.scores-container');
 const scoresButton = document.querySelector('.scores-button');
-let scoresContainer = document.querySelector('.scores-container');
+const closeScoresButton = document.querySelector('.close-scores-button');
 let guessedCards = [];
 let clickCounter = 0;
 let moves = 0;
@@ -17,3 +18,8 @@ startButtons.forEach(button => {
 scoresButton.addEventListener('click', () => {
     scoresContainer.classList.toggle('visible');
 })
+
+closeScoresButton.addEventListener('click', () => {
+    scoresContainer.classList.remove('visible');
+})
+

@@ -106,20 +106,44 @@ button {
     margin-top: 20px;
 }
 
-.scores-container {
-    display: none;
-    position: absolute;
-    height: 300px;
-    width: 500px;
-    background-color: honeydew;
-}
-
 .scores-button {
     position: absolute;
     top: 20px;
     right: 20px;
 }
 
+.scores-container {
+    z-index: 99;
+    display: none;
+    position: absolute;
+    top: 90px;
+
+    height: 300px;
+    width: 500px;
+    background-color: honeydew;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-container {
+    display: flex;
+}
+
+.list-container div {
+    margin: 0 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ol {
+    padding: 0;
+}
+
 .visible {
-    display: block;
+    display: flex;
 }
