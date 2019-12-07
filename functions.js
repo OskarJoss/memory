@@ -67,6 +67,9 @@ const returnDifficulty = (numberOfPairs) => {
 
 const startGame = numberOfPairs => {
     moves = 0;
+    guessedCards = [];
+    clickCounter = 0;
+
     const container = document.querySelector(".cards-container");
     //empty card container
     container.innerHTML = "";
