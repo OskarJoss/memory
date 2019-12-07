@@ -155,10 +155,10 @@ const startGame = numberOfPairs => {
 //adds highscore to localStorage
 const addHighScore = (difficulty, numberOfMoves) => {
     if (localStorage.getItem(`${difficulty}-highscores`) === null) {
-        let highScores = [];
+        let emptyArray = [];
         localStorage.setItem(
             `${difficulty}-highscores`,
-            JSON.stringify(highScores)
+            JSON.stringify(emptyArray)
         );
     }
 

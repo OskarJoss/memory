@@ -122,7 +122,6 @@ button {
     width: 500px;
     background-color: honeydew;
 
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -146,5 +145,5 @@ ol {
 }
 
 .visible {
-    display: block;
+    display: flex;
 }
