@@ -33,6 +33,7 @@ const createCards = numberOfPairs => {
             cardFrame.innerHTML = `
                 <div class="card" data-number="0">
                     <div class="card-back">
+                        <img class="back-image" src="https://images.unsplash.com/photo-1543005472-1b1d37fa4eae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="back">
                     </div>
                     <div class="card-front">
                         <img class="bomb-image" src="https://image.flaticon.com/icons/svg/112/112683.svg" alt="bomb">
@@ -42,9 +43,10 @@ const createCards = numberOfPairs => {
             cardFrame.innerHTML = `
                 <div class="card" data-number="${number}">
                     <div class="card-back">
+                        <img class="back-image" src="https://images.unsplash.com/photo-1543005472-1b1d37fa4eae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="back">
                     </div>
                     <div class="card-front">
-                        <h2>${number}</h2>
+                        <h2 class="card-number">${number}</h2>
                     </div>
                 </div>`;
         }
@@ -226,14 +228,14 @@ const endGame = (winOrLose, numberOfPairs, numberOfMoves) => {
     if (winOrLose === "lose") {
         container.innerHTML = `
         <div class="replay-div">
-            <h1>GAME OVER</h1>
+            <h2 class="lose-header">GAME OVER</h2>
             <img class="explosion-image" src="https://media0.giphy.com/media/oe33xf3B50fsc/giphy.gif?cid=790b7611c1646c6930bb86c91dbd7392e4e6f1026a27b90f&rid=giphy.gif alt="explosion">
             <button class="replay-button">Play Again</button>
         </div>`;
     } else if (winOrLose === "win") {
         container.innerHTML = `
         <div class="replay-div">
-            <h1>CONGRATULATIONS!</h1>
+            <h2 class="win-header">CONGRATULATIONS!</h2>
             <img class="victory-image" src="https://media2.giphy.com/media/c862b2dAhJXYA/giphy.gif?cid=790b7611d0fed7c16f745b76570918d9df85d41792a7271a&rid=giphy.gif" alt="victory">
             <p>You beat ${difficulty}-mode in ${numberOfMoves} moves.</p>
             <button class="replay-button">Play Again</button>

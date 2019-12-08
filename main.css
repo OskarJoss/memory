@@ -1,6 +1,8 @@
 body {
     height: 100vh;
-    background-color: antiquewhite;
+    background: linear-gradient(#D09F64, #f49797);
+    font-family: 'Righteous', cursive;
+    color: #460af8;
 }
 
 section {
@@ -12,6 +14,8 @@ section {
 
 h1 {
     font-size: 50px;
+    margin: 10px 0;
+    color: #4b13f1ad;
 }
 
 .button-container {
@@ -20,22 +24,32 @@ h1 {
 
 button {
     height: 30px;
-    width: 70px;
+    border-radius: 5px 5px 5px 5px;
     margin: 0 10px;
+    background-color: #eda2faba;
+    font-family: 'Righteous', cursive;
+    font-size: 14px;
+    color: #460af8;
+    border: 2px solid #4b13f1ad;
+}
+
+.start-button {
+    width: 70px;
 }
 
 .button-active {
-    background-color: blue;
+    background-color: #f8f8f8;
 }
 
 .cards-container {
+    margin-top: 15px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
 .easy-container {
-    width: 400px;
+    width: 480px;
 }
 
 .medium-container {
@@ -48,9 +62,10 @@ button {
 
 .card-frame {
     position: relative;
-    height: 100px;
-    width: 80px;
-    margin: 10px;
+    height: 130px;
+    width: 100px;
+    margin: 7px;
+    border-radius: 20%;
 }
 
 .card {
@@ -62,6 +77,7 @@ button {
 }
 
 .card-back {
+    border-radius: 5%;
     height: 100%;
     width: 100%;
     position: absolute;
@@ -70,12 +86,13 @@ button {
 }
 
 .card-front {
+    border-radius: 5%;
     height: 100%;
     width: 100%;
     position: absolute;
     backface-visibility: hidden;
     transform: rotateY(180deg);
-    background-color: red;
+    background-color: rgb(243, 124, 124);
 
     display: flex;
     justify-content: center;
@@ -85,6 +102,19 @@ button {
 
 .flipped {
     transform: rotateY(180deg);
+}
+
+.card-number {
+    font-family: 'Calistoga', cursive;
+    font-weight: 500;
+    font-size: 60px;
+}
+
+.back-image {
+    border-radius: 5%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .bomb-image {
