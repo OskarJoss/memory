@@ -1,3 +1,5 @@
+'use strict';
+
 const startButtons = document.querySelectorAll(".start-button");
 const scoresContainer = document.querySelector('.scores-container');
 const scoresButton = document.querySelector('.scores-button');
@@ -11,6 +13,11 @@ getHighScores();
 //run start game function when start-buttons are clicked
 startButtons.forEach(button => {
     button.addEventListener("click", event => {
+        startButtons.forEach((button) => {
+            button.classList.remove('button-active');
+        })
+        event.target.classList.add('button-active');
+
         const buttonData = event.target.dataset.pairs;
         startGame(buttonData);
     });
@@ -19,6 +26,7 @@ startButtons.forEach(button => {
 
 scoresButton.addEventListener('click', () => {
     scoresContainer.classList.toggle('visible');
+    scoresButton.classList.toggle('button-active');
 })
 
 closeScoresButton.addEventListener('click', () => {
