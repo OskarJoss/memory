@@ -31,5 +31,6 @@ scoresButton.addEventListener('click', () => {
 
 closeScoresButton.addEventListener('click', () => {
     scoresContainer.classList.remove('visible');
+    scoresButton.classList.remove('button-active');
 })
 
