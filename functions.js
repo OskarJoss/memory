@@ -1,3 +1,5 @@
+'use strict';
+
 //shuffle array function
 function shuffle(a) {
     var j, x, i;
@@ -167,6 +169,7 @@ const addHighScore = (difficulty, numberOfMoves) => {
     localStorage.setItem(`${difficulty}-highscores`, JSON.stringify(scores));
 };
 
+//get highscores from localstorage and add the 5 best scores of each difficulty to the page
 const getHighScores = () => {
     //empty the lists
     const lists = document.querySelectorAll('ol');
@@ -194,7 +197,7 @@ const getHighScores = () => {
             allHighScores[difficulty].sort((a, b) => {
                 return a - b;
             });
-            //could cause trouble in strict mode
+
             allHighScores[difficulty] = allHighScores[difficulty].slice(0,5);
         }
     })

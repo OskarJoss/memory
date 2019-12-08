@@ -1,3 +1,5 @@
+'use strict';
+
 const startButtons = document.querySelectorAll(".start-button");
 const scoresContainer = document.querySelector('.scores-container');
 const scoresButton = document.querySelector('.scores-button');
