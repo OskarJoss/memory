@@ -24,6 +24,10 @@ button {
     margin: 0 10px;
 }
 
+.button-active {
+    background-color: blue;
+}
+
 .cards-container {
     display: flex;
     flex-direction: row;
