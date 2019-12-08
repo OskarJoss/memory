@@ -33,7 +33,7 @@ const createCards = numberOfPairs => {
             cardFrame.innerHTML = `
                 <div class="card" data-number="0">
                     <div class="card-back">
-                        <img class="back-image" src="https://images.unsplash.com/photo-1543005472-1b1d37fa4eae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="back">
+                        <img class="back-image" src="https://images.unsplash.com/photo-1504199020112-921914a72fb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="back">
                     </div>
                     <div class="card-front">
                         <img class="bomb-image" src="https://image.flaticon.com/icons/svg/112/112683.svg" alt="bomb">
@@ -43,7 +43,7 @@ const createCards = numberOfPairs => {
             cardFrame.innerHTML = `
                 <div class="card" data-number="${number}">
                     <div class="card-back">
-                        <img class="back-image" src="https://images.unsplash.com/photo-1543005472-1b1d37fa4eae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="back">
+                        <img class="back-image" src="https://images.unsplash.com/photo-1504199020112-921914a72fb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="back">
                     </div>
                     <div class="card-front">
                         <h2 class="card-number">${number}</h2>
@@ -69,6 +69,8 @@ const returnDifficulty = numberOfPairs => {
         return "medium";
     } else if (numberOfPairs == 10) {
         return "hard";
+    } else if (numberOfPairs == 24) {
+        return "insane";
     }
 };
 
@@ -93,6 +95,8 @@ const startGame = numberOfPairs => {
         container.classList.add("medium-container");
     } else if (difficulty === "hard") {
         container.classList.add("hard-container");
+    } else if (difficulty === "insane") {
+        container.classList.add("insane-container");
     }
 
     createCards(numberOfPairs);
